@@ -1,0 +1,173 @@
+body {
+  background-image: url('images/chalkboard.png');
+  background-size: auto 100%;
+  background-position: center center;
+  height:100vh;
+  width:100vw;
+}
+
+.content {
+	overflow:auto;
+	width: 90vw;
+	height:70vh;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	grid-column-gap: 3vw;
+	grid-row-gap: 2vh;
+	padding:1vw;
+	margin-left:5vw;
+	margin-top:2vh;
+}
+
+.NP { grid-area: 1 / 1 / 3 / 3; }
+.Quantum { grid-area: 2 / 3 / 4 / 5; }
+.Misc {grid-area: 1 / 3 / 2/ 5}
+.Door {grid-area: 3 / 1 / 4/ 3}
+
+.Door {
+  grid-area: 3 / 1 / 4 / 3;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.Door .door-link {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+.door {
+  position: absolute;
+  inset: 0;            
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.door--open {
+  opacity: 0;
+  z-index: 2;         
+}
+
+.door--closed {
+  opacity: 1;
+  z-index: 1;
+}
+
+.Door .door-link:hover .door--open  { opacity: 1; }
+.Door .door-link:hover .door--closed{ opacity: 0; }
+.Door .door-link:hover span         { opacity: 1; }
+
+.Door span {
+  opacity: 0;
+  position: absolute;
+  z-index: 3;
+  font-size: 3rem;
+  color: #FFF;
+  pointer-events: none;
+}
+
+
+.NP {
+	text-align:center;
+	background-color: rgba(255, 255, 255, 0.5);
+	display:flex;
+	flex-direction:row;
+	justify-content: space-around;
+	gap: 2vw;
+	overflow:auto;
+	padding:1.5vw;
+}
+
+
+.picture > img {
+	width: 15vw;
+	padding:1vh;
+	height:auto;
+}
+
+.borderClass {
+    border-image:  url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFQAAABUCAYAAAAcaxDBAAACQ0lEQVR4Xu2bWW7DMAxEk/sfugtQFLHiashyyCx4/fWIFJ+5yE59vcz/fQy7vE76G3X2ExhAzXcYoACNE5go+TUjJ3zeEhj1PxHcaEAnuTTqH6Dxag4pARrCFBd1AB0tsXiov8rW/QH0crEysBr74+De4eMfiUmGVqDt1lLyZrIABeiRAD20mBGtJVXc2/fy1v09W/YYeEkTAJWIcgKA5nhJNUAlopzg4UCn37Dn8Gj1OicUUBXvdu5EhpJyoEN6rAKgZv4AfTegqseY4x03V41vu/6sh1YdjhNKOqzGB9AFOECTGajk7UCrDtYA3PYUoOx19/4O9r57aKuDL/uRs24WSkXfGi9A6zecDF3Su1pBAAVopWPer6WHenn2DmGGEkOpnK+UfBnh0QBAAXokUD3nmXkylABqPjgDFKDenueeomQoGUqGVqqAt03mCgIoQCsFyes7L70Ta+5TCCVPyXuTlgz18uTliJknQAFqbvovB3TdcLVpV9c/O8Atr47/DwXogrwKpLqeDDXfkLcDqnrqet39lYUbaPePhHePnioA9Z0SQG8IRu4eQPcpR4aqkkxeTwNN2rc/2mX9d+vTn9VUN/Rsx6ZqPGpIH9pmpIdmNwTQLDGhByhAUwTooSlcWgxQzSilAGgKlxYDVDPaKlJDlmOTpg1QzSilAGgKlxY/HGjqUU3H067Ivk3bbqijhwK0OQdSJdO8lzPzZKgZ+ssBVS3AzCdtztr2rMaCoaiMCJqxyawMrMaCIQI0CCoqe2ugn1sR7DHAkvj3AAAAAElFTkSuQmCC') 28 /  10px / 0 round;
+    border-width:  1px;
+    border-style:  solid;
+    border-radius: 12px; 
+}
+
+.Quantum {
+	text-align:center;
+	background-color: rgba(255, 255, 255, 0.5);
+	display:flex;
+	flex-direction:row;
+	justify-content: space-around;
+	gap:2vw;
+	overflow:auto;
+	padding:1.5vw;
+}
+
+.content p {
+	margin:1vw;
+	font-size: 1.5vw;
+	color: black;
+	width: 20vw;
+	font-weight:100;
+	font-family: 'Courier New', monospace;
+}
+.Misc {
+	text-align: center;
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.Misc p {
+	width:auto;
+	font-size:1.2vw;
+}
+
+.content h {
+	padding-top 1vh;
+	margin:1vw;
+	font-size: 2vw;
+	color: black;
+	width: 25vw;
+	text-align: center;
+	font-family: 'Courier New', monospace;
+	font-weight: 500;
+	text-align:center;
+	border-bottom: 1px solid;
+}
+
+.LinkPic {
+  justify-self: center;
+  transition: all .3s; 
+  width: 9vw;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 4px;
+  image-rendering: pixelated;
+  border-image-width: 0.6vw;
+  border-image-outset: 0.3px;
+  border-image-slice: 36%;
+  border-image-repeat: round round;
+  border-style: solid;
+  border-image-source: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAVAgMAAAA/TvYGAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAAxQTFRFAAAAAAAA////+Pj4EZhu1AAAAAR0Uk5TAP///7MtQIgAAABaSURBVHicY2T9zcDA+ptRUkeA4Yg6YyhrAMPq34xZ+nsYRdQYpbw/MLguY2TtLmBInc3IZnWAQfI5o+RzBgY2KxIodkuwPqgpkj4fGFyWo1ukLcBwVI0R4hYAN4IjlkoaqZsAAAAASUVORK5CYII=");
+}
+
+.LinkPic:hover {
+	transform: scale(1.09);
+}
+
+a {
+justify-self: center;
+color: black;
+font-size:1vw;
+}
+
+
+	
+
+

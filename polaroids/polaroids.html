@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Polaroids</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link href="./polaroids.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="subway">
+      <div class="albums">
+      	<div class="intro">
+      		<p>The secret to how polaroids works lies in its film. The image is reflected onto the film where chemicals 
+      		in the film react to capture the image. This film is then pushed out by rollers whichbreak the seal on the chemicals 
+      		which expose and develop the film making it visible within minutes. This type of camera is what I use to take my pictures. 
+      		I find that the one shot nature of polaroid photos have a certain charm to it. Look through my pictures and see if you agree!
+      		</p>
+      	</div>
+        <!-- Stack 1 -->
+        <div class="stack">
+          <h class="Title">California</h>
+          <div class="california">
+            <img src="./images/california/1.png" alt="">
+            <img src="./images/california/2.png" alt="">
+            <img src="./images/california/3.png" alt="">
+            <img src="./images/california/4.png" alt="">
+            <img src="./images/california/5.png" alt="">
+            <img src="./images/california/6.png" alt="">
+            <img src="./images/california/7.png" alt="">
+            <img src="./images/california/8.png" alt="">
+            <img src="./images/california/9.png" alt="">
+            <img src="./images/california/10.png" alt="">
+            <img src="./images/california/11.png" alt="">
+            <img src="./images/california/12.png" alt="">
+            <img src="./images/california/13.png" alt="">
+            <img src="./images/california/14.png" alt="">
+            <img src="./images/california/15.png" alt="">
+            <img src="./images/california/16.png" alt="">
+            <img src="./images/california/17.png" alt="">
+            <img src="./images/california/18.png" alt="">
+            <img src="./images/california/19.png" alt="">
+          </div>
+          <div class="controls">
+            <button class="prev"><</button>
+            <button class="next">></button>
+          </div>
+        </div>
+
+        <!-- Stack 2 -->
+        <div class="stack">
+          <h class="Title">Asia</h>
+          <div class="asia">
+            <img src="./images/asia/1.png" alt="">
+            <img src="./images/asia/2.png" alt="">
+            <img src="./images/asia/3.png" alt="">
+            <img src="./images/asia/4.png" alt="">
+            <img src="./images/asia/5.png" alt="">
+            <img src="./images/asia/6.png" alt="">
+            <img src="./images/asia/7.png" alt="">
+          </div>
+          <div class="controls">
+            <button class="prev"><</button>
+            <button class="next">></button>
+          </div>
+        </div>
+        
+        <!-- Stack 3 -->
+        <div class="stack">
+          <h class="Title">Purdue</h>
+          <div class="purdue">
+            <img src="./images/purdue/1.png" alt="">
+            <img src="./images/purdue/2.png" alt="">
+            <img src="./images/purdue/3.png" alt="">
+            <img src="./images/purdue/4.png" alt="">
+            <img src="./images/purdue/5.png" alt="">
+            <img src="./images/purdue/6.png" alt="">
+            <img src="./images/purdue/7.png" alt="">
+            <img src="./images/purdue/8.png" alt="">
+            <img src="./images/purdue/9.png" alt="">
+          </div>
+          <div class="controls">
+            <button class="prev"><</button>
+            <button class="next">></button>
+          </div>
+        </div>
+      </div>
+      <a class="corner-button" href="../homepage/homepage.html" aria-label="Go to another page">
+		  ← Back
+		</a>
+
+    </div>
+
+
+    <script>
+      document.querySelectorAll('.stack').forEach(function initStack(stackEl) {
+        const frame = stackEl.querySelector('.california, .asia, .purdue');
+        if (!frame) return;
+
+        const imgs = Array.from(frame.querySelectorAll('img'));
+        const prevBtn = stackEl.querySelector('.prev');
+        const nextBtn = stackEl.querySelector('.next');
+        if (!imgs.length || !prevBtn || !nextBtn) return;
+
+        let i = 0;
+        show(i);
+
+        nextBtn.addEventListener('click', function () {
+          i = (i + 1) % imgs.length;
+          show(i);
+        });
+
+        prevBtn.addEventListener('click', function () {
+          i = (i - 1 + imgs.length) % imgs.length;
+          show(i);
+        });
+
+        function show(idx) {
+          imgs.forEach(function (img, j) {
+            if (j === idx) img.classList.add('active');
+            else img.classList.remove('active');
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

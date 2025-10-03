@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Gallery</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link href="./gallery.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <div class="div1"><img src="paintings/pic1.png" alt="lauren" /></div>
+      <div class="div2"><img src="paintings/pic2.png" alt="star" /></div>
+      <div class="div3"><img src="paintings/pic3.png" alt="lamb" /></div>
+      <div class="div4"><img src="paintings/pic4.png" alt="cowboy" /></div>
+      <div class="div5"><img src="paintings/pic5.png" alt="fish" /></div>
+      <div class="div6"><img src="paintings/pic6.png" alt="cowboy" /></div>
+      <div class="div7"></div>
+      <div class="div8"><img src="paintings/pic8.png" alt="lawson" /></div>
+      <div class="div9"><img src="paintings/pic9.png" alt="wonder" /></div>
+      <div class="div10"><img src="paintings/pic7.png" alt="summer" /></div>
+      <div class="div11"><img src="paintings/pic11.png" alt="city" /></div>
+      <div class="div12"><img src="paintings/pic12.png" alt="restaurant" /></div>
+    </div>
+    <div class="top-bar">
+	  <div class="backarrow">
+	   <a href="../art.html">
+		<img src="paintings/arrow.png" alt="backArrow"/>
+		</a>
+	  </div>
+	  <div class="gramaphone-table">
+		<img src="paintings/table.png" class="table">
+    	<img src="paintings/gramaphone.png" class="gramaphone">
+	  </div>
+	</div>
+	<audio id="music" autoplay loop>
+	  <source src="suis-moi.mp3" type="audio/mpeg">
+	</audio>
+  </div>
+  
+  <dialog id="lightbox">
+    <img id="lightbox-img" alt="" />
+  </dialog>
+  
+</body>
+
+<script>
+    const dlg = document.getElementById('lightbox');
+    const dlgImg = document.getElementById('lightbox-img');
+
+    document.querySelector('.container').addEventListener('click', (e) => {
+      const img = e.target.closest('img');
+      if (!img) return;
+      dlgImg.src = img.src;
+      dlgImg.alt = img.alt || '';
+      dlg.showModal();
+    });
+
+    dlg.addEventListener('click', (e) => {
+      if (e.target === dlg) dlg.close();
+    });
+    
+    const gramophone = document.getElementById("gramophone");
+	const music = document.getElementById("music");
+	
+	let isPlaying = true;
+	
+	gramophone.addEventListener("click", () => {
+	if (isPlaying) {
+	  music.pause();
+	} else {
+	  music.play();
+	}
+	isPlaying = !isPlaying;
+	});
+  </script>
+</html>
