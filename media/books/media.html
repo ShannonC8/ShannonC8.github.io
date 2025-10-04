@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Research</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="media.css" rel="stylesheet" type="text/css" media="all">
+  </head>
+  <body>
+    <div class="house">
+
+      <a class="corner-button" href="../../homepage/homepage.html" aria-label="Go to another page">← Back</a>
+
+      <div class="Music">
+        <div class="choices">
+        <nav class="media-nav">
+		  <a href="../songs/media.html">.MP3</a>
+		  <a href="../mp4/media.html">.MP4</a>
+		  <a href="../books/media.html">Book</a>
+		</nav>
+          <p> Choose a Book! </p>
+          <img src="./images/books/alice.png"               alt="alice"/>
+          <img src="./images/books/breasts-and-eggs.png"    alt="breasts-and-eggs"/>
+          <img src="./images/books/crime-punishment.png"    alt="crime-punishment"/>
+          <img src="./images/books/george-secret.png"       alt="george-secret"/>
+          <img src="./images/books/harry-potter.png"        alt="harry-potter"/>
+          <img src="./images/books/never-known-men.png"     alt="never-known-men"/>
+          <img src="./images/books/piranesi.png"            alt="piranesi"/>
+        </div>
+
+        <div class="chosen">
+          <img class="cd-player" src="./images/blank-table.png" alt="table"/>
+
+          <div class="outline">
+            <img class="art" id="chosenArt" alt="">
+          </div>
+
+          <div class="book-info" id="bookInfo">
+            <h2 id="bookTitle"></h2>
+            <p id="bookDesc"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const picks = document.querySelectorAll('.choices img');
+      const chosenArt = document.getElementById('chosenArt');
+      const titleEl = document.getElementById('bookTitle');
+      const descEl  = document.getElementById('bookDesc');
+
+      function basename(path) {
+        const file = path.split('/').pop();
+        const dot = file.lastIndexOf('.');
+        return dot > 0 ? file.slice(0, dot) : file;
+      }
+
+      // edit these blurbs whenever you like
+      const BOOK_INFO = {
+        'alice': {
+          title: "Alice's Adventures in Wonderland",
+          desc: "one of my favorite childhood books, super whimsical and fun!"
+        },
+        'breasts-and-eggs': {
+          title: "Breasts and Eggs",
+          desc: "Three women in Osaka and Tokyo navigating bodies, work, and the shape of independence."
+        },
+        'crime-punishment': {
+          title: "Crime and Punishment",
+          desc: "A classic book analyzing guilt, consciencness. "
+        },
+        'george-secret': {
+          title: "George's Secret Key to the Universe",
+          desc: "Kids book by steven hawking, recommned if you're into cosmology and science."
+        },
+        'harry-potter': {
+          title: "Harry Potter",
+          desc: "One of my fav series"
+        },
+        'never-known-men': {
+          title: "I who have never known men",
+          desc: "A book that kinda makes you feel empty afterwards."
+        },
+        'piranesi': {
+          title: "Piranesi",
+          desc: "Backrooms-esque. Story about a house that is larger on the inside that the outside"
+        }
+      };
+      
+      const infoBox = document.getElementById('bookInfo');
+
+		picks.forEach(img => {
+		  img.addEventListener('click', () => {
+			const src = img.getAttribute('src');
+			const key = basename(src);
+		
+			chosenArt.src = src;
+			chosenArt.alt = key;
+		
+			const info = BOOK_INFO[key] || { title: key, desc: "" };
+			titleEl.textContent = info.title;
+			descEl.textContent = info.desc;
+			infoBox.classList.add('active');
+		  });
+		});
+
+
+      picks.forEach(img => {
+        img.addEventListener('click', () => {
+          const src  = img.getAttribute('src');
+          const key  = basename(src);   
+
+          chosenArt.src = src;
+          chosenArt.alt = key;
+
+          // show description
+          const info = BOOK_INFO[key] || { title: key, desc: "" };
+          titleEl.textContent = info.title;
+          descEl.textContent  = info.desc;
+        });
+      });
+
+      
+    </script>
+  </body>
+</html>

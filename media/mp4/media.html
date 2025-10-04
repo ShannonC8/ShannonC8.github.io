@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Research</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="media.css" rel="stylesheet" type="text/css" media="all">
+  </head>
+  <body>
+    <div class="house">
+    
+      <a class="corner-button" href="../../homepage/homepage.html" aria-label="Go to another page">← Back</a>
+      <div class="Movies">
+        <div class="choices">
+        <nav class="media-nav">
+		  <a href="../songs/media.html">.MP3</a>
+		  <a href="../mp4/media.html">.MP4</a>
+		  <a href="../books/media.html">Book</a>
+		</nav>
+          <p>Choose .MP4</p>
+          <img src="./images/movie/into-the-wild.png" alt="into-the-wild" />
+          <img src="./images/movie/mama-mia.png" alt="mama-mia" />
+          <img src="./images/movie/one-million-yen.png" alt="one-million-yen" />
+          <img src="./images/movie/over-the-garden.png" alt="over-the-garden" />
+          <img src="./images/movie/severance.png" alt="severance" />
+          <img src="./images/movie/spirited-away.png" alt="spirited-away" />
+          <img src="./images/movie/steven-universe.png" alt="steven-universe" />
+          <img src="./images/movie/totoro.png" alt="totoro" />
+        </div>
+
+        <div class="chosen">
+          <div class="movie-info">
+            <h2 id="movieTitle"></h2>
+            <p id="movieDesc"></p>
+          </div>
+          <img class="tv-frame" src="./images/table-tv.png" alt="table tv frame"/>
+
+          <div class="tv-screen">
+            <img id="movieGif" alt="Selected movie GIF"/>
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Get elements
+      const picks = document.querySelectorAll('.choices img');
+      const gifEl = document.getElementById('movieGif');
+      const titleEl = document.getElementById('movieTitle');
+      const descEl = document.getElementById('movieDesc');
+
+      // Helper: "images/movie/totoro.png" -> "totoro"
+      function basename(path) {
+        const file = path.split('/').pop();
+        const dot = file.lastIndexOf('.');
+        return dot > 0 ? file.slice(0, dot) : file;
+      }
+
+      // Short blurbs (edit these to your liking)
+      const MOVIE_INFO = {
+        'into-the-wild': {
+          title: 'Into the Wild',
+          desc: 'Real life story about someone who is trying to find themselves in nature. Beautiful cinematography'
+        },
+        'mama-mia': {
+          title: 'Mamma Mia!',
+          desc: 'ABBA-fueled musical chaos on a Greek island, such fun summer vibes!'
+        },
+        'one-million-yen': {
+          title: 'One Million Yen Girl',
+          desc: 'A woman restarts life each time she save a million yen. Very calm'
+        },
+        'over-the-garden': {
+          title: 'Over the Garden Wall',
+          desc: 'Best show for fall time about two brothers who journey into the unknown'
+        },
+        'severance': {
+          title: 'Severance',
+          desc: 'Very liminal show, takes place in office and very corperate dystopian'
+        },
+        'spirited-away': {
+          title: 'Spirited Away',
+          desc: 'A bathhouse of spirits, courage under pressure, and an unforgettable coming-of-age.'
+        },
+        'steven-universe': {
+          title: 'Steven Universe',
+          desc: 'Kindness, identity, and cosmic gems—tender adventures with big emotional heart.'
+        },
+        'totoro': {
+          title: 'My Neighbor Totoro',
+          desc: 'Gentle countryside magic and soot sprites; childhood wonder made cozy.'
+        }
+      };
+
+      // Click handler
+      picks.forEach(img => {
+        img.addEventListener('click', () => {
+          const key = basename(img.getAttribute('src'));  // e.g. "totoro"
+          const gifSrc = `./images/gif/${key}.gif`;
+
+          // Load GIF into screen
+          gifEl.src = gifSrc;
+          gifEl.alt = key;
+
+          // Update text
+          const info = MOVIE_INFO[key] || { title: key, desc: '' };
+          titleEl.textContent = info.title;
+          descEl.textContent = info.desc;
+        });
+      });
+
+      // Optional: preload first item so the TV isn’t empty on load
+      (function initFirst() {
+        const first = document.querySelector('.choices img');
+        if (first) first.click();
+      })();
+    </script>
+  </body>
+</html>

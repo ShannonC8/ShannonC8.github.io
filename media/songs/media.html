@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Research</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="media.css" rel="stylesheet" type="text/css" media="all">
+  </head>
+  <body>
+    <div class="house">
+       <a class="corner-button" href="../../homepage/homepage.html" aria-label="Go to another page">
+		  ← Back
+		</a>
+		
+      <div class="Music">
+        <div class="choices">
+        <nav class="media-nav">
+		  <a href="../songs/media.html">.MP3</a>
+		  <a href="../mp4/media.html">.MP4</a>
+		  <a href="../books/media.html">Book</a>
+		</nav>
+          <p> Choose a song! </p>
+          <img src="./images/music/lamp.png" alt="lamp"/>
+          <img src="./images/music/hello-weekend.png" alt="hello-weekend"/>
+          <img src="./images/music/cat-stevens.png" alt="cat-stevens"/>
+          <img src="./images/music/colter-wall.png" alt="colter-wall"/>
+          <img src="./images/music/duster.png" alt="duster"/>
+          <img src="./images/music/gregory.png" alt="gregory"/>
+          <img src="./images/music/kanye.png" alt="kanye"/>
+          <img src="./images/music/lily-chou.png" alt="lily-chou"/>
+          <img src="./images/music/lord-huron.png" alt="lord-huron"/>
+          <img src="./images/music/lupe.png" alt="lupe"/>
+          <img src="./images/music/nujabes.png" alt="nujabes"/>
+          <img src="./images/music/paper-kites.png" alt="paper-kites"/>
+          <img src="./images/music/sam-cooke.png" alt="sam-cooke"/>
+          <img src="./images/music/swan-lake.png" alt="swan-lake"/>
+        </div>
+
+        <div class="chosen">
+          <img class="cd-player" src="./images/table-audio.png" alt="cd player"/>
+          <div class="outline">
+          	<img class="art" id="chosenArt" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <audio id="musicPlayer"></audio>
+
+    <script>
+      const picks = document.querySelectorAll('.choices img');
+      const player = document.getElementById('musicPlayer');
+      const chosenArt = document.getElementById('chosenArt');
+
+      function basename(path) {
+        const file = path.split('/').pop();             
+        const dot = file.lastIndexOf('.');
+        return dot > 0 ? file.slice(0, dot) : file;     
+      }
+
+      picks.forEach(img => {
+        img.addEventListener('click', () => {
+          const imgSrc = img.getAttribute('src');
+          const name = basename(imgSrc);               
+          const audioSrc = `./audio/${name}.mp3`;
+
+          chosenArt.src = imgSrc;
+          chosenArt.alt = name;
+
+         
+          if (player.src !== new URL(audioSrc, window.location).href) {
+            player.src = audioSrc;
+          }
+          player.currentTime = 0;
+          player.play().catch(err => {
+            console.warn('Playback failed (maybe file missing or autoplay policy):', err);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,159 @@
+/* Page background */
+body {
+  background-image: url('images/background.png');
+  background-size: auto 100%;
+  background-position: center center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  display: flex;
+}
+
+.media-nav {
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.6rem;
+  z-index: 2000;
+  background: rgba(255, 255, 255, 0.8);
+  width: 12vw;
+}
+
+.media-nav a {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  color: #111;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+
+
+/* House/window bg */
+.house {
+  background-image: url('images/window.png');
+  background-position: center bottom;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+}
+
+/* Layout */
+.Movies {
+  display: flex;
+  flex-direction: row;
+  width: 80vw;
+  height: 80vh;
+  margin: 10vh 10vw;
+}
+
+/* Left column: choices */
+.choices {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  overflow-y: auto;
+  width: 12vw;
+  padding: 1vw;
+  background: rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+
+.choices p {
+  font-size: 1.5vw;
+  color: black;
+  font-weight: 100;
+  font-family: 'Courier New', monospace;
+  padding: 0.2vw;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.7);
+  
+}
+
+
+
+.choices img {
+  width: 12vw;
+  margin-top: 3vh;
+  cursor: pointer;
+}
+
+/* Right column: TV + info */
+.chosen {
+  margin-left: 5vw;
+  height: 83vh;
+  width: 55vw;
+  position: relative;
+  overflow: visible; /* TV frame can extend */
+}
+
+.tv-frame {
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 45vw;
+  z-index: 2;              /* above the GIF */
+  pointer-events: none;    /* clicks pass through to nothing (purely visual) */
+}
+
+.tv-screen {
+  position: absolute;
+  bottom: 12.5vw;  /* distance from bottom of .chosen; adjust */
+  left: 17.6vw;    /* align horizontally; adjust */
+  width: 24.8vw;   /* 16:9-ish window width; adjust */
+  height: 15.7vw;  /* 16:9-ish window height; adjust */
+  overflow: hidden;
+  border-radius: 8px; /* soften edges if your TV has rounded screen corners */
+  z-index: 1;         /* below the frame */
+}
+
+/* The GIF inside the crop box */
+#movieGif {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;    /* fill the window and crop excess */
+  image-rendering: auto;
+  pointer-events: none;
+}
+
+
+.movie-info {
+  position: absolute;
+  left: 23%;
+  bottom: 30.5vw; 
+  max-width: 25vw;
+  background: rgba(255,255,255,0.5);
+  border-radius: 14px;
+  padding: 0.8rem 1rem;
+  z-index: 3;
+}
+
+.movie-info h2 {
+  margin: 0 0 0.25rem 0;
+  font: 600 1.2rem/1.2 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+.movie-info p {
+  margin: 0;
+  font: 400 0.95rem/1.3 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+.corner-button {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,.92);
+  border: 1px solid #222;
+  color: #111;
+  text-decoration: none;
+  font: inherit;
+  box-shadow: 0 4px 10px rgba(0,0,0,.15);
+  transition: background .15s ease, transform .05s ease;
+}
+.corner-button:hover { transform: translateY(-1px); }
