@@ -1,0 +1,319 @@
+body {
+  background: url('images/cat-ocean.png') center/cover fixed no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab {
+  display: none;
+  position: relative;
+  width: 50vw;
+  height: 65vh;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 0.6vw;
+  padding: 2vw;
+  overflow-y: auto;
+  z-index: 6;
+}
+
+.main-title {
+	height:3vh;
+	width: 50vw;
+	background: rgba(255,255,255,0.8);
+	border-radius: 0.6vw;
+	padding: 2vw;
+	margin-top:2vh;
+	margin-bottom: 2vh;
+	font-family: 'Courier New', monospace;
+	font-weight: 500;
+	font-size:2vw;
+	
+}
+
+.tab::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(#f8f8f8 0 1.2vw, #ececec 1.25vw);
+  opacity: 0.3;
+  border-radius: 0.6vw;
+  pointer-events: none;
+}
+
+.box {
+	display: flex;
+	flex-direction: column;
+}
+
+.tab:target {
+  display: block;
+  animation: fadeIn 0.25s ease;
+}
+
+a[href^="#tab"] {
+  position: fixed;
+  left: calc(50% - 25vw - 8vw + 0.3vw);
+  width: 4vw;
+
+  background: #fafafa;
+  border: 0.15vw solid #ccc;
+  border-right: none;
+  border-radius: 0.6vw 0 0 0.6vw;
+  padding: 0.6vw 0.8vw;
+  box-shadow: -0.4vw 0 1vw rgba(0, 0, 0, 0.1);
+
+  color: #111;
+  text-decoration: none;
+  font-size: 0.9vw;
+  font-weight: 500;
+
+  transition: transform 0.2s ease, background 0.2s ease;
+  z-index: 5;
+}
+
+a[href="#tab1"] { top: 20vh; background: #fffbf0; }
+a[href="#tab2"] { top: 27.5vh; background: #f0f8ff; }
+a[href="#tab3"] { top: 35vh; background: #f8f0ff; }
+
+a[href^="#tab"]:hover {
+  transform: translateX(-0.6vw);
+  background: #fff;
+}
+
+#tab1 {
+  font-size: 1.1vw;
+  line-height: 1.8;
+  color: #222;
+  font-family: "Courier New", monospace;
+}
+
+#tab1 h2 {
+  font-size: 1.8vw;
+  font-weight: 700;
+  text-align: left;
+  padding-bottom: 0.6vw;
+  border-bottom: 0.15vw solid rgba(0, 0, 0, 0.6);
+  width: 100%;
+}
+
+
+#tab1 p {
+  font-size: 1.1vw;
+}
+
+#tab1 a {
+  color: #0056b3;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 0.1vw solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+#tab1 a:hover {
+  color: #003e8a;
+  border-bottom: 0.1vw solid #003e8a;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 0.3vw;
+  padding: 0.1vw 0.4vw;
+}
+
+#tab1 strong {
+  color: #111;
+  font-weight: 600;
+}
+
+/* --- Compact link layout with inline descriptions --- */
+.link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.link-list li {
+  margin-bottom: 0.6vw;
+  line-height: 1.6;
+  font-size: 1.05vw;
+  color: #222;
+}
+
+/* Make <a> and <p> sit inline on same line */
+.link-list li a,
+.link-list li p {
+  display: inline;         /* force inline text flow */
+  vertical-align: baseline;
+  margin: 0;
+}
+
+/* Link styling */
+.link-list a {
+  font-weight: 600;
+  color: #0056b3;
+  text-decoration: none;
+  border-bottom: 0.1vw solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.link-list a:hover {
+  color: #003e8a;
+  border-bottom: 0.1vw solid #003e8a;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 0.3vw;
+  padding: 0.1vw 0.4vw;
+}
+
+/* Description immediately follows link */
+.link-list p {
+  font-weight: 400;
+  font-size: 1.05vw;
+  color: #333;
+  opacity: 0.85;
+}
+
+/* dash separator */
+.link-list p::before {
+  content: " — ";
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.corner-button {
+  position: fixed;       
+  left: 1rem;
+  top: 1rem;
+  z-index: 1000;
+
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,.92);
+  border: 1px solid #222;
+  color: #111;
+  text-decoration: none;
+  font: inherit;
+  box-shadow: 0 4px 10px rgba(0,0,0,.15);
+  transition: background .15s ease, transform .3s ease;
+}
+
+.corner-button:hover {
+ transform: scale(1.09);
+}
+
+/* ---------------- CODING TAB ---------------- */
+#tab2 {
+  font-size: 1.05vw;
+  line-height: 1.8;
+  color: #222;
+  font-family: "Courier New", monospace;
+  padding-right: 2vw;
+}
+
+/* Main title underline */
+#tab2 h2 {
+  font-size: 1.8vw;
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 2vw;
+  padding-bottom: 0.6vw;
+  border-bottom: 0.15vw solid rgba(0, 0, 0, 0.6);
+}
+
+/* Step headers */
+#tab2 h3 {
+  font-size: 1.35vw;
+  font-weight: bold;
+  margin-top: 1.8vw;
+  margin-bottom: 0.8vw;
+  padding-bottom: 0.4vw;
+  border-bottom: 0.1vw solid rgba(0, 0, 0, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Code blocks */
+#tab2 pre {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 0.6vw;
+  padding: 1vw 1.5vw;
+  overflow-x: auto;
+  font-size: 0.9vw;
+  color: #111;
+  box-shadow: inset 0 0 0.3vw rgba(0, 0, 0, 0.1);
+  margin: 1vw 0;
+}
+
+/* Inline code */
+#tab2 code {
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 0.3vw;
+  padding: 0.1vw 0.4vw;
+  font-size: 0.9vw;
+}
+
+/* Step spacing and divider */
+.coding-step {
+  margin-bottom: 2vw;
+  padding-bottom: 1.2vw;
+  border-bottom: 0.08vw dashed rgba(0, 0, 0, 0.15);
+}
+
+.coding-intro p {
+  font-size: 1.1vw;
+  margin-bottom: 1.8vw;
+}
+
+
+#tab3 {
+  font-size: 1.05vw;
+  line-height: 1.8;
+  color: #222;
+  font-family: "Courier New", monospace;
+  padding-right: 2vw;
+}
+
+#tab3 h2 {
+  font-size: 1.8vw;
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 2vw;
+  padding-bottom: 0.6vw;
+  border-bottom: 0.15vw solid rgba(0, 0, 0, 0.6);
+}
+
+#tab3 h3 {
+  font-size: 1.35vw;
+  font-weight: bold;
+  margin-top: 1.5vw;
+  margin-bottom: 0.8vw;
+  padding-bottom: 0.4vw;
+  border-bottom: 0.1vw solid rgba(0, 0, 0, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.setup-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.setup-list li {
+  margin-bottom: 0.6vw;
+  font-size: 1.05vw;
+  color: #222;
+}
+
+/* Make key terms stand out */
+.setup-list strong {
+  color: #000;
+  font-weight: 600;
+}
+
+/* Soft notebook-like divider between sections */
+.setup-section {
+  margin-bottom: 1.5vw;
+  padding-bottom: 1vw;
+  border-bottom: 0.08vw dashed rgba(0, 0, 0, 0.2);
+}
+
