@@ -125,7 +125,7 @@ body {
   width: 0;
   height: 0;
   overflow: hidden;
-  opacity: 0.0001; /* keep images loadable but invisible */
+  opacity: 0.0001; 
   pointer-events: none;
 }
 
@@ -155,7 +155,7 @@ body {
 
 .chooseSketch img.thumb,
 .chooseSketch img {
-  height: 15vh;
+  height: 13vh;
   cursor: pointer;
   transition: transform 0.1s ease, box-shadow 0.15s ease;
 }
