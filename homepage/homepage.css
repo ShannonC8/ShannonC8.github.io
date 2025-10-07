@@ -54,17 +54,10 @@ height:80vh;
  padding:1vw;
 }
 
-.coding h {
-	font-size:1.5vw;
-	font-weight:500;
-	border-bottom: 3px solid black;
-	padding-bottom: 5px;
-}
-
-.coding ul{	
-	list-style: none;
-	padding:0.5vh;
+.coding p {
 	font-size:1vw;
+	font-weight:500;
+	padding-bottom: 5px;
 }
 
 

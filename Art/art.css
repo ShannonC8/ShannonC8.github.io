@@ -6,10 +6,6 @@ body {
   background-image: url("images/window.png");
   background-size: 100% auto;
   background-position: center center;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue",
-    Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 .desk {
@@ -227,8 +223,5 @@ body {
   .chooseSketch {
     bottom: 2vh;
     padding: 8px 10px;
-  }
-  .to-gallery {
-    display: none; 
   }
 }

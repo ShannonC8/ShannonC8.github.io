@@ -19,8 +19,8 @@ body {
 }
 
 .media-nav a {
-  padding: 0.4rem 0.9rem;
-  font-size: 0.9rem;
+  padding: 0.5vw;
+  font-size: 1vw;
   color: #111;
   text-decoration: none;
   transition: background 0.2s ease, transform 0.1s ease;

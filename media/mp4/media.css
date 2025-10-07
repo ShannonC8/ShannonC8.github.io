@@ -20,16 +20,14 @@ body {
 }
 
 .media-nav a {
-  padding: 0.4rem 0.9rem;
-  font-size: 0.9rem;
+  padding: 0.5vw;
+  font-size: 1vw;
   color: #111;
   text-decoration: none;
   transition: background 0.2s ease, transform 0.1s ease;
 }
 
 
-
-/* House/window bg */
 .house {
   background-image: url('images/window.png');
   background-position: center bottom;
@@ -38,7 +36,6 @@ body {
   background-size: cover;
 }
 
-/* Layout */
 .Movies {
   display: flex;
   flex-direction: row;
@@ -47,7 +44,6 @@ body {
   margin: 10vh 10vw;
 }
 
-/* Left column: choices */
 .choices {
   display: flex;
   flex-direction: column;
