@@ -1,194 +1,234 @@
 body {
-  background-image: url('images/table.png');
-  background-size: auto 100%;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  background-image: url("images/window.png");
+  background-size: 100% auto;
   background-position: center center;
-  height:100vh;
-  width:100vw;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-.parent {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-template-rows: auto auto auto auto auto auto auto auto auto auto;
-	grid-column-gap: 2vw;
-	grid-row-gap: 2vh;
-	width:100vw;
+.desk {
+  height: 100%;
+  width: 100%;
+  background-image: url("images/desk.png");
+  background-position: center bottom;
+  background-size: cover;
+  display: grid;
+  place-items: center;
 }
 
-.back {
-	padding: 2vw;
-	margin:2vw;
-	margin-top:5vh;
-	width: 20vw;
-	background: rgba(255,255,255,.8);
-	border-radius: 20px;
-}
-
-.gallery-entrance { grid-area: 2 / 3 / 3 / 4; }
-.sketchbook1-container { grid-area: 2 / 1 / 6 / 4; }
-.doodles {grid-area: 5 / 1 / 6 / 2; }
-.sketchbook2-container{ grid-area: 6 / 2 / 10 / 5; }
-.Title { background-color: yellow;grid-area: 1 / 2 / 2 / 4; }
-
-
-.parent > * {
+.table {
   position: relative;
-  display: flex;
+  width: 100%;
+  height: 100%;
+  display:flex;
+}
+
+.corner-button {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 1000;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #222;
+  color: #111;
+  text-decoration: none;
+  font: inherit;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+.corner-button:hover {
+  background: rgba(255, 255, 255, 1);
+}
+.corner-button:active {
+  transform: translateY(1px);
 }
 
-.Title {
-	background: rgba(255,255,255,.8);
-	border-radius:10px;
-	width: 60vw;
-	    
-    border-image:  url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAbUlEQVQ4T2NkYGD4D8S4ACMeOZz6QJpAktg047MMZhdWfciGIhsCE8fjULAUujown5ChhLw/MIaie5XiMCUUdiTJw8IM5ipcfGyG4tQzaig4uEZwmBKTyElOp3QvpQZngUKT8pRupRShMMWaKgDp41AIfQHjpAAAAABJRU5ErkJggg==') 7 /  7px / 0 round;
-    border-width:  7px;
-    border-style:  solid; 
-  
-  
+.viewer {
+  position: absolute;
+  inset: 10% 10% 18% 10%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  overflow: hidden;
+  z-index: 20;
+  margin: 6vh;
 }
 
-.Title h1 {
-	font-family: "DOS", "Courier New", Courier, monospace;
-	font-size:5vw;
-	font-weight:400;
-	
+.viewer-inner {
+  display: grid;
+  place-items: center;
+  padding: 1rem;
 }
 
-.gallery-entrance {
-	margin: 2vw;
-	height:20vh;
-	margin-left:10vw;
-}
-
-.sketchbook1-container {
-	flex-direction: column;
-	width: 80vw;
-	margin:2vw;
-	aspect-ratio: 5 /3;
-	pointer-events: none;
-}
-
-.sketchbook2-container {
-	display:flex;
-	flex-direction: column;
-	width: 50vw;
-	margin:2vw;
-	aspect-ratio: 5 /4;
-	pointer-events: none;
-}
-
-.sketchbook1 {
-
-  position: relative;            
-  width: 100%;
-  height: 100%;
-}
-
-.sketchbook2 {
-  position: relative;            
-  width: 100%;
-  height: 100%;
-}
-
-.sketchbook1 img {
-  transform: rotate(-2deg);
+#viewerMsg {
+  display: block; 
+  font-size: clamp(14px, 2.2vw, 22px);
+  color: #111;
+  font-weight: 400;
+  font-family: "Courier New", Courier, monospace;
+  padding: 0.4rem 0.7rem;
   border-radius: 10px;
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 65vw;
-  object-fit: contain;
-  z-index:1000;
-  opacity: 0;
-  transition: opacity .25s ease;
+  background: rgba(255, 255, 255, 0.7);
 }
 
-.ticket a {
-	width:20vw;
-}
-
-.ticket img {
-	width:20vw;
-}
-
-.ticket img:hover {
-	transform: scale(1.09) rotate(10deg);
-}
-
-.ticket{
-	  position:relative;
-	  width: fit-content;
-	  height: fit-content;
-	  display: inline-block;
-}
-.ticket p{
-	opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 99;
-  font-size: 2.5rem;
-  color: #FFF;
-  filter: drop-shadow(1px 1px 0 black) 
-    drop-shadow(-1px 1px 0 black)
-    drop-shadow(1px -1px 0 black)
-    drop-shadow(-1px -1px 0 black);
-}
-
-.ticket:hover p {
-	opacity:1;
-}
-
-.sketchbook2 img {
+#viewerImg {
+  display: none;
+  max-width: 100%;
+  max-height: 100%;
+  height: 50vh;
   border-radius: 10px;
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 50vw;
-  object-fit: contain;
-  opacity: 0;
-  z-index:1000;
-  transition: opacity .25s ease;
-  transform: rotate(1deg);
-}
-.sketchbook1 img.active{
-  opacity: 1;
-}
-
-.sketchbook2 img.active{
-  opacity: 1;
+  user-select: none;
 }
 
 .controls {
-  pointer-events: auto;
   display: flex;
   justify-content: center;
-  gap: .75rem;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 1rem 1rem;
 }
 
-.sketchbook2-container controls {
-  display: flex;
-  gap: .30rem;
-}
-
-.controls .prev,
-.controls .next {
-  cursor: pointer;
-  padding: .5rem 1rem;
-  border: 1px solid #222;
-  background: rgba(255,255,255,.9);
+.controls button {
+  min-width: 3rem;
+  padding: 0.45rem 0.95rem;
   border-radius: 999px;
-  font: inherit;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid #222;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-weight: 600;
+}
+.controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.controls button:active {
+  transform: translateY(1px);
 }
 
-.controls .prev:hover,
-.controls .next:hover {
-  background: #fff;
+.page-indicator {
+  font-size: 0.95rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px dashed rgba(0, 0, 0, 0.25);
+}
+
+.stacks {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0.0001; /* keep images loadable but invisible */
+  pointer-events: none;
+}
+
+.chooseSketch {
+  position: fixed;
+  left: 3vw;
+  right: 3vw;
+  bottom: 3vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around; 
+  background: rgba(255, 255, 255, 0.3);
+  padding: clamp(8px, 1.2vw, 16px);
+  border-radius: 12px;
+  z-index: 30;
+  backdrop-filter: blur(1px);
 }
 
 
-  
+.choice {
+  display: grid;
+  grid-template-rows: auto auto;
+  align-items: center;
+  justify-items: center;
+  gap: 0.35rem;
+}
+
+.chooseSketch img.thumb,
+.chooseSketch img {
+  height: 15vh;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.15s ease;
+}
+.chooseSketch img:hover {
+  transform: translateY(-2px);
+}
+.chooseSketch img:focus {
+  outline: 3px solid #111;
+  outline-offset: 3px;
+}
+
+.chooseSketch p {
+  margin: 0;
+  margin-top: 0.1rem;
+  font-size: clamp(12px, 1.2vw, 16px);
+  color: #111;
+  font-family: "Courier New", Courier, monospace;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0.2rem 0.5rem;
+  border-radius: 8px;
+}
+
+.to-gallery {
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid #222;
+  font-weight: 600;
+  cursor: pointer;
+  background: rgb(0,0,0,0);
+  border: none;
+}
+
+.to-gallery p {
+  margin: 0;
+  margin-top: 0.1rem;
+  font-size: clamp(12px, 1.2vw, 16px);
+  color: #111;
+  font-family: "Courier New", Courier, monospace;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0.2rem 0.5rem;
+  border-radius: 8px;
+}
+
+
+.to-gallery:active {
+  transform: translateY(3px);
+}
+
+
+@media (max-width: 900px) {
+  .viewer {
+    inset: 8% 5% 22% 5%;
+  }
+  .chooseSketch {
+    gap: 2vw;
+  }
+  .chooseSketch img {
+    height: 16vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .viewer {
+    inset: 7% 4% 26% 4%;
+  }
+  .chooseSketch {
+    bottom: 2vh;
+    padding: 8px 10px;
+  }
+  .to-gallery {
+    display: none; 
+  }
+}
