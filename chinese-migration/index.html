@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chinese Migration Visualization</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 1rem;
+    }
+    #buttons {
+      margin-bottom: 1rem;
+    }
+    button {
+      margin-right: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    iframe {
+      width: 100%;
+      height: 85vh;
+      border: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Chinese Migration in the United States</h1>
+
+  <div id="buttons">
+    <button onclick="showState()">State View</button>
+    <button onclick="showCounty()">County View</button>
+  </div>
+
+  <!-- State map iframe -->
+  <iframe id="stateFrame" 
+          src="chinese_migration_map.html">
+  </iframe>
+
+  <!-- County map iframe (hidden at first) -->
+  <iframe id="countyFrame"
+          src="chinese_migration_county_map.html"
+          style="display:none;">
+  </iframe>
+
+  <script>
+    function showState() {
+      document.getElementById("stateFrame").style.display = "block";
+      document.getElementById("countyFrame").style.display = "none";
+    }
+
+    function showCounty() {
+      document.getElementById("stateFrame").style.display = "none";
+      document.getElementById("countyFrame").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
+
